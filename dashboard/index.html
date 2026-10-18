@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compyutah</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+  :root{
+    --bg:#0c1211; --panel:#101716; --panel2:#0e1413; --line:#243733;
+    --amber:#679189; --amber-dim:#4b6b65; --amber-faint:#243f3a;
+    --text:#b1c0bd; --muted:#657d78;
+    --alert:#b98274; --ok:#8bab8e; --wait:#a78f72;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none !important}
+  /* scrollbars: thin teal thumb on an invisible track, no end buttons; inherits everywhere */
+  html{scrollbar-width:thin;scrollbar-color:var(--amber) transparent}
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-track,::-webkit-scrollbar-corner{background:transparent}
+  ::-webkit-scrollbar-thumb{background:var(--amber)}
+  ::-webkit-scrollbar-button{display:none}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:"Cascadia Mono","JetBrains Mono",ui-monospace,Consolas,monospace;
+    font-size:14px; line-height:1.5;
+    padding-bottom:60px;
+  }
+  body::after{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:99;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,.13) 0 1px, transparent 1px 3px);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  .p-it{display:flex;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--amber-faint)}
+  .p-it:last-child{border-bottom:none}
+  .p-it .st{color:var(--amber);flex:none}
+  .p-it b{color:var(--amber);font-weight:600}
+  .p-it span{display:block;color:var(--muted);font-size:12px}
+  .p-it.hot .st,.p-it.hot b{color:var(--alert)}
+  .p-it.hot .st{animation:blink 1.6s steps(1) infinite}
+  @keyframes blink{50%{opacity:.2}}
+
+  header{padding:26px 0 8px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  h1{font-size:26px;font-weight:600;color:var(--amber);letter-spacing:.06em;margin:4px 0 2px;
+     text-shadow:0 0 14px rgba(103,145,137,.14)}
+  .stamp{font-size:12px;color:var(--muted)}
+  .stale{margin-top:10px;padding:6px 12px;border:1px dashed var(--alert);color:var(--alert);font-size:12px;letter-spacing:.08em}
+  .cline{margin:14px 0 16px;padding:10px 14px;border-left:3px solid var(--amber);background:var(--panel);color:var(--text)}
+  .cline .cur{display:inline-block;width:8px;height:14px;background:var(--amber);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+
+  .grid{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .panel{border:1px solid var(--line);background:var(--panel);margin-bottom:20px}
+  .panel h2{
+    font-size:11px;font-weight:600;letter-spacing:.24em;color:var(--amber);
+    padding:8px 14px;border-bottom:1px solid var(--line);background:var(--panel2);
+  }
+  .panel h2 .tag{float:right;color:var(--muted);letter-spacing:.05em}
+  .panel .body{padding:12px 14px}
+  .empty{color:var(--muted);font-size:12.5px;padding:4px 0}
+
+  .ev{display:grid;grid-template-columns:122px 1fr;gap:12px;padding:7px 0;border-bottom:1px dashed var(--amber-faint)}
+  .ev:last-child{border-bottom:none}
+  .ev time{color:var(--amber-dim);font-variant-numeric:tabular-nums}
+
+  .item{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px dashed var(--amber-faint);cursor:pointer;user-select:none}
+  .item:last-child{border-bottom:none}
+  .item .box{color:var(--amber-dim);white-space:nowrap;flex:none}
+  .item .meta{margin-left:auto;color:var(--muted);font-size:12px;white-space:nowrap}
+  .item .sub{color:var(--muted);font-size:12px;margin-top:2px}
+  .item:hover .box{color:var(--amber)}
+  .item.done{color:var(--muted)}
+  .item.done .ttl{text-decoration:line-through;text-decoration-color:var(--amber)}
+  .item.done .box .b0{display:none}
+  .item .box .b1{display:none}
+  .item.done .box .b1{display:inline;color:var(--ok);font-size:11px;letter-spacing:.1em}
+  .streak{color:var(--amber);font-size:12px}
+  .hgroup{margin:10px 0 2px;color:var(--muted);font-size:10px;letter-spacing:.24em}
+
+  .mail{padding:7px 0;border-bottom:1px dashed var(--amber-faint)}
+  .mail:last-child{border-bottom:none}
+  .mail .from{color:var(--amber)}
+  .mail .flag{font-size:10px;letter-spacing:.12em;padding:1px 6px;border:1px solid var(--alert);color:var(--alert);margin-right:8px}
+  .mail .flag.att{border-color:var(--wait);color:var(--wait)}
+  .mail.dim{color:var(--muted);font-size:12.5px}
+
+  .wt{padding:9px 0;border-bottom:1px dashed var(--amber-faint);cursor:pointer;user-select:none}
+  .wt:last-child{border-bottom:none}
+  .wt .cond{color:var(--wait);font-size:13px}
+  .wt .due{color:var(--alert);font-size:12px}
+  .wt .head{display:flex;gap:10px;align-items:baseline}
+  .wt:hover .box{color:var(--amber)}
+  .wt.done .ttl{text-decoration:line-through;text-decoration-color:var(--amber);color:var(--muted)}
+  .wt.done .cond,.wt.done .due{opacity:.45}
+  .wt.done .box .b0{display:none}
+  .wt .box .b1{display:none}
+  .wt.done .box .b1{display:inline;color:var(--ok);font-size:11px;letter-spacing:.1em}
+
+  .wrapup textarea{
+    width:100%;min-height:90px;background:var(--panel2);border:1px solid var(--line);
+    color:var(--text);font:inherit;padding:10px;resize:vertical;outline:none;
+  }
+  .wrapup textarea:focus{border-color:var(--amber-dim)}
+  .btn{
+    display:inline-block;background:var(--amber);color:#04211d;border:none;cursor:pointer;
+    font:inherit;font-size:11px;font-weight:700;letter-spacing:.18em;padding:6px 16px;margin-top:10px;
+  }
+  .btn:hover{box-shadow:0 0 14px rgba(103,145,137,.25)}
+  .btn:disabled{opacity:.4;cursor:default;box-shadow:none}
+  .btn.ghost{background:transparent;color:var(--amber);border:1px solid var(--amber-dim)}
+  .btn.ghost:hover{border-color:var(--amber)}
+  .btn.warn{background:transparent;color:var(--alert);border:1px solid var(--alert)}
+  .jnote{margin-left:12px;color:var(--muted);font-size:12px}
+  .jnote.okmsg{color:var(--ok)}
+  footer{margin-top:30px;color:var(--muted);font-size:11px;letter-spacing:.15em;text-align:center}
+  #err{max-width:1180px;margin:20px auto;padding:0 20px;color:var(--alert)}
+
+  /* ---- chat ---- */
+  .chat .tag.idle{color:var(--ok)} .chat .tag.thinking{color:var(--amber);animation:blink 1.2s steps(1) infinite}
+  .chat .tag.error,.chat .tag.stopped{color:var(--alert)} .chat .tag.starting{color:var(--wait)}
+  #transcript{max-height:460px;overflow-y:auto;padding:4px 0;scroll-behavior:smooth}
+  .msg{padding:6px 0;border-bottom:1px dashed var(--amber-faint);white-space:pre-wrap;word-break:break-word}
+  .msg:last-child{border-bottom:none}
+  .msg.you{color:var(--amber)} .msg.you::before{content:"> ";color:var(--amber-dim)}
+  .msg.bot{color:var(--text)}
+  .msg.sys{color:var(--muted);font-size:12px}
+  .msg.bad{color:var(--alert);font-size:12px}
+  .msg.ok{color:var(--ok);font-size:12px}
+  details.tool{margin:4px 0;border:1px dashed var(--amber-faint);font-size:12.5px}
+  details.tool summary{cursor:pointer;padding:5px 10px;color:var(--amber-dim);user-select:none;list-style:none}
+  details.tool summary::before{content:"▸ ";} details.tool[open] summary::before{content:"▾ ";}
+  details.tool summary:hover{color:var(--amber)}
+  details.tool summary .st{float:right;color:var(--muted)}
+  details.tool summary .st.err{color:var(--alert)}
+  details.tool pre{margin:0;padding:8px 10px;background:var(--panel2);color:var(--text);white-space:pre-wrap;word-break:break-word;font-size:12px;max-height:260px;overflow:auto}
+  details.tool pre.res{border-top:1px dashed var(--amber-faint);color:var(--muted)}
+  details.tool pre.res.err{color:var(--alert)}
+  .card{margin:8px 0;padding:10px 12px;border:1px solid var(--wait);background:var(--panel2)}
+  .card.q{border-color:var(--amber)}
+  .card.resolved{opacity:.55;border-style:dashed}
+  .card .ch{font-size:10px;letter-spacing:.2em;color:var(--wait);margin-bottom:6px}
+  .card.q .ch{color:var(--amber)}
+  .card .why{color:var(--muted);font-size:12px;margin:2px 0 6px}
+  .card pre{margin:6px 0;padding:8px;background:var(--bg);white-space:pre-wrap;word-break:break-word;font-size:12px;max-height:200px;overflow:auto}
+  .card .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .card .acts .btn{margin-top:6px}
+  .card input[type=text]{background:var(--bg);border:1px solid var(--line);color:var(--text);font:inherit;font-size:12px;padding:5px 8px;outline:none;flex:1;min-width:160px;margin-top:6px}
+  .card input[type=text]:focus{border-color:var(--amber-dim)}
+  .card .qq{margin:8px 0 4px}
+  .card .qq .qh{color:var(--amber);font-size:10px;letter-spacing:.2em}
+  .card .opt{display:block;padding:5px 8px;margin:3px 0;border:1px solid var(--line);cursor:pointer;user-select:none}
+  .card .opt:hover{border-color:var(--amber-dim)}
+  .card .opt.sel{border-color:var(--amber);color:var(--amber)}
+  .card .opt small{display:block;color:var(--muted);font-size:11.5px}
+  .card .opt .rec{color:var(--ok);font-size:10px;letter-spacing:.15em;margin-left:6px}
+  .card .dec{color:var(--muted);font-size:12px;margin-top:4px}
+  .composer{display:flex;gap:8px;align-items:flex-end;margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+  .composer textarea{flex:1;min-height:40px;max-height:160px;background:var(--panel2);border:1px solid var(--line);color:var(--text);font:inherit;padding:8px 10px;resize:vertical;outline:none}
+  .composer textarea:focus{border-color:var(--amber-dim)}
+  .composer .btn{margin-top:0}
+  .cfoot{display:flex;gap:14px;align-items:center;margin-top:8px;color:var(--muted);font-size:11px;letter-spacing:.05em}
+  .cfoot .btn{margin-top:0;padding:3px 10px;font-size:10px}
+  .vrow{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+  .vrow .btn{margin-top:0;padding:3px 10px;font-size:10px}
+  .vrow .btn.ico{padding:3px 8px;display:inline-flex;align-items:center}
+  .btn.ico svg{width:14px;height:14px;display:block}
+  .btn.ghost.on{background:var(--amber);color:#04211d;border-color:var(--amber)}
+  .btn.ghost.rec{border-color:var(--alert);color:var(--alert)}
+  details.turn{margin:6px 0;border-left:2px solid var(--amber-faint);padding-left:8px}
+  details.turn summary{cursor:pointer;color:var(--muted);font-size:10.5px;letter-spacing:.18em;user-select:none;list-style:none;padding:2px 0}
+  details.turn summary::before{content:"▸ "} details.turn[open] summary::before{content:"▾ "}
+  details.turn summary:hover{color:var(--amber-dim)}
+  details.turn .tb .msg.bot{color:var(--muted);font-size:12.5px}
+  .vs{font-size:10px;letter-spacing:.2em;color:var(--muted);margin-left:4px}
+  .vs.listening{color:var(--alert)} .vs.followup{color:var(--wait)}
+  .vs.thinking{color:var(--amber)} .vs.speaking{color:var(--ok)}
+  .vnote{color:var(--muted);font-size:11px;margin-left:auto}
+</style>
+</head>
+<body>
+<div id="err"></div>
+<div class="wrap">
+  <div class="grid">
+    <div class="main">
+
+      <header>
+        <h1>COMPYUTAH</h1>
+        <div class="stamp" id="stamp"></div>
+        <div class="stale" id="stale" hidden></div>
+        <div class="cline" id="cline" hidden></div>
+      </header>
+
+      <div class="panel chat">
+        <h2>CHAT <span class="tag" id="ctag">—</span></h2>
+        <div class="body">
+          <div id="transcript"><div class="empty">connecting…</div></div>
+          <div class="composer">
+            <textarea id="ctext" rows="1" placeholder=">"></textarea>
+            <button class="btn" id="csend">SEND</button>
+            <button class="btn warn" id="cstop" hidden>■ STOP</button>
+          </div>
+          <div class="cfoot">
+            <span id="cinfo"></span>
+            <span style="margin-left:auto"></span>
+            <button class="btn ghost" id="cnew" title="start a fresh session (today's is otherwise resumed)">NEW SESSION</button>
+          </div>
+          <div class="vrow">
+            <button class="btn ghost" id="vtalk" disabled title="click to talk, click again when done">● TALK</button>
+            <button class="btn ghost ico" id="vwake" disabled title="listen for the wake word hands-free" aria-label="listen for the wake word hands-free">
+              <svg id="ico-ear" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/></svg>
+              <svg id="ico-ear-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/><path d="m3 3 18 18"/></svg>
+            </button>
+            <button class="btn ghost ico" id="vmute" title="mute replies" aria-label="mute replies">
+              <svg id="ico-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9.5 9.5 0 0 1 0 14"/></svg>
+              <svg id="ico-off" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z" fill="currentColor"/><path d="m16 9 6 6M22 9l-6 6"/></svg>
+            </button>
+            <span class="vs idle" id="vstate">IDLE</span>
+            <span class="vnote" id="vnote"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>INBOX</h2>
+        <div class="body" id="comms"></div>
+      </div>
+
+      <div class="panel">
+        <h2>AGENDA</h2>
+        <div class="body" id="agenda"></div>
+      </div>
+
+      <div class="panel">
+        <h2>TASKS</h2>
+        <div class="body" id="tasks"></div>
+      </div>
+
+      <div class="panel">
+        <h2>WAITING</h2>
+        <div class="body" id="waiting"></div>
+      </div>
+
+      <div class="panel wrapup">
+        <h2>JOURNAL</h2>
+        <div class="body">
+          <textarea id="jtext" placeholder="> journal entry — written verbatim, no LLM middleman"></textarea>
+          <button class="btn" id="jsave">■ SAVE ENTRY</button><span class="jnote" id="jnote"></span>
+        </div>
+      </div>
+
+    </div>
+
+    <aside style="position:sticky;top:20px">
+      <div class="panel">
+        <h2>PRIORITIES</h2>
+        <div class="body" id="priorities"></div>
+      </div>
+      <div class="panel" style="margin-bottom:0">
+        <h2>HABITS</h2>
+        <div class="body" id="habits"></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>COMPYUTAH // THE BOULDER ISN'T GOING TO PUSH ITSELF</footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+async function api(path, body){
+  const res = await fetch(path, body ? {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)} : undefined);
+  const data = await res.json();
+  if(!res.ok || data.error) throw new Error(data.error || res.statusText);
+  return data;
+}
+
+function boxHTML(){ return '<span class="box"><span class="b0">[ ]</span><span class="b1">■ DONE</span></span>'; }
+
+function render(s){
+  $("err").textContent = "";
+  $("stamp").textContent = `${s.weekday} · ${s.date_display}` + (s.focus ? ` · FOCUS: ${s.focus.toUpperCase()}` : "");
+
+  const stale = $("stale");
+  if (s.plan_stale || s.dash_stale){
+    stale.hidden = false;
+    stale.textContent = s.plan_stale
+      ? `▲ PLAN STALE (dated ${s.plan_date || "never"}) — run /daily-planner`
+      : `▲ BRIEFING STALE — run /daily-planner to refresh agenda + email triage`;
+  } else stale.hidden = true;
+
+  const cline = $("cline");
+  if (s.compyutah_line){
+    cline.hidden = false;
+    cline.innerHTML = esc(s.compyutah_line) + ' <span class="cur"></span>';
+  } else cline.hidden = true;
+
+  // comms
+  $("comms").innerHTML = (s.emails.length || s.email_footnotes.length)
+    ? s.emails.map(e =>
+        `<div class="mail"><span class="flag${e.flag==="ATTN"?" att":""}">${esc(e.flag)}</span>` +
+        `<span class="from">${esc(e.from)}</span> — ${esc(e.subject)}</div>`).join("") +
+      s.email_footnotes.map(f => `<div class="mail dim">▸ ${esc(f)}</div>`).join("")
+    : '<div class="empty">no triage yet — run /daily-planner</div>';
+
+  // agenda
+  $("agenda").innerHTML = s.agenda.length
+    ? s.agenda.map(e => `<div class="ev"><time>${esc(e.time)}</time><div>${esc(e.title)}</div></div>`).join("")
+    : '<div class="empty">nothing on the calendar</div>';
+
+  // tasks
+  $("tasks").innerHTML = s.tasks.length
+    ? s.tasks.map(t => {
+        const sub = [t.priority, t.time_needed].filter(Boolean).join(" · ");
+        return `<div class="item${t.done?" done":""}" data-task="${esc(t.id)}" data-prev="${esc(t.done ? "todo" : (t.status || "todo"))}">${boxHTML()}` +
+          `<div><span class="ttl">${esc(t.id)} — ${esc(t.title)}</span>` +
+          (sub ? `<div class="sub">${esc(sub)}</div>` : "") + `</div>` +
+          (t.due_date ? `<span class="meta">due ${esc(t.due_date.slice(5))}</span>` : "") + `</div>`;
+      }).join("")
+    : '<div class="empty">no tasks selected — run /daily-planner</div>';
+
+  // waiting
+  $("waiting").innerHTML = s.waiting.length
+    ? s.waiting.map(w =>
+        `<div class="wt${w.done?" done":""}" data-task="${esc(w.id)}" data-prev="waiting">` +
+        `<div class="head">${boxHTML()}<span class="ttl">${esc(w.id)} — ${esc(w.title)}</span></div>` +
+        `<div class="cond">${esc(w.waiting_on)}</div>` +
+        (w.due_date ? `<div class="due">due ${esc(w.due_date)}</div>` : "") + `</div>`).join("")
+    : '<div class="empty">nothing blocked</div>';
+
+  // priorities
+  $("priorities").innerHTML = s.priorities.length
+    ? s.priorities.map((p,i) =>
+        `<div class="p-it${i===0?" hot":""}"><span class="st">▲</span>` +
+        `<div><b>${esc(p.title.toUpperCase())}</b>` + (p.note ? `<span>${esc(p.note)}</span>` : "") + `</div></div>`).join("")
+    : '<div class="empty">no active priorities</div>';
+
+  // habits
+  const groups = [["morning","MORNING"],["daily","DAILY"],["night","NIGHT"],[null,""]];
+  let hh = "", first = true;
+  for (const [g, label] of groups){
+    const rows = s.habits.filter(h => (h.group ?? null) === g);
+    if (!rows.length) continue;
+    if (label) { hh += `<div class="hgroup"${first?' style="margin-top:0"':""}>${label}</div>`; first = false; }
+    hh += rows.map(h =>
+      `<div class="item${h.today?" done":""}" data-habit="${esc(h.name)}">${boxHTML()}` +
+      `<span class="ttl">${esc(h.name)}</span>` +
+      `<span class="meta${h.streak>0?" streak":""}">${h.streak>0 ? "▲"+h.streak : "—"}</span></div>`).join("");
+  }
+  $("habits").innerHTML = hh || '<div class="empty">no habits</div>';
+
+  $("jnote").textContent = s.journal_exists ? "entry exists for today — new text appends" : "";
+  $("jnote").classList.remove("okmsg");
+}
+
+async function load(){
+  try { render(await api("/api/state")); }
+  catch (e){ $("err").textContent = "STATE ERROR: " + e.message; }
+}
+
+document.addEventListener("click", async ev => {
+  const item = ev.target.closest(".item, .wt");
+  if (!item) return;
+  const nowDone = !item.classList.contains("done");
+  item.classList.toggle("done", nowDone); // optimistic
+  try {
+    if (item.dataset.task)  await api("/api/task",  {id: item.dataset.task, done: nowDone, prev: item.dataset.prev});
+    if (item.dataset.habit) await api("/api/habit", {name: item.dataset.habit, done: nowDone});
+  } catch (e) {
+    item.classList.toggle("done", !nowDone); // revert
+    $("err").textContent = "WRITE FAILED: " + e.message;
+  }
+});
+
+$("jsave").addEventListener("click", async () => {
+  const text = $("jtext").value;
+  if (!text.trim()) return;
+  $("jsave").disabled = true;
+  try {
+    await api("/api/journal", {note: text});
+    $("jtext").value = "";
+    $("jnote").textContent = "■ saved";
+    $("jnote").classList.add("okmsg");
+    setTimeout(() => { $("jnote").classList.remove("okmsg"); load(); }, 1500);
+  } catch (e) {
+    $("err").textContent = "JOURNAL SAVE FAILED: " + e.message;
+  } finally {
+    $("jsave").disabled = false;
+  }
+});
+
+load();
+// refresh when the tab regains focus, so state edited elsewhere shows up
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+
+/* ================= chat ================= */
+
+const T = $("transcript");
+const tools = new Map();   // tool_use id -> <details>
+const cards = new Map();   // permission request id -> <div.card>
+let agentStatus = "—", lastResultTouchedState = false, mcpWarned = false, live = false;
+
+// Per-tab id. Rides on each message so only the tab that asked speaks the answer —
+// otherwise every open tab with an event stream would play the audio at once.
+const ORIGIN = (() => {
+  try { let c = sessionStorage.getItem("voicepa-origin"); if (!c){ c = Math.random().toString(36).slice(2, 10); sessionStorage.setItem("voicepa-origin", c); } return c; }
+  catch (e) { return Math.random().toString(36).slice(2, 10); }
+})();
+
+function nearBottom(){ return T.scrollHeight - T.scrollTop - T.clientHeight < 80; }
+function append(el){
+  const stick = nearBottom();
+  if (T.firstElementChild && T.firstElementChild.classList.contains("empty")) T.innerHTML = "";
+  T.appendChild(el);
+  if (stick) T.scrollTop = T.scrollHeight;
+}
+function mk(cls, text){ const d = document.createElement("div"); d.className = "msg " + cls; d.textContent = text; return d; }
+function line(cls, text){ const d = mk(cls, text); append(d); return d; }
+function pretty(v){ return typeof v === "string" ? v : JSON.stringify(v, null, 2); }
+
+// One collapsed "thinking" card per turn holds every tool call and intermediate line;
+// only the final statement sits outside it.
+let turn = null;   // {det, body, steps, lastText}
+function stepLabel(n){ return `${n} step${n === 1 ? "" : "s"}`; }
+function openTurn(){
+  const det = document.createElement("details"); det.className = "turn";
+  det.innerHTML = "<summary>0 steps …</summary>";
+  const body = document.createElement("div"); body.className = "tb"; det.appendChild(body);
+  append(det); turn = {det, body, steps: 0, lastText: null};
+}
+function into(el){
+  if (!turn) return append(el);
+  const stick = nearBottom(); turn.body.appendChild(el); if (stick) T.scrollTop = T.scrollHeight;
+}
+function closeTurn(ev){
+  if (!turn) return;
+  const secs = ev.duration_ms != null ? ` · ${(ev.duration_ms / 1000).toFixed(0)}s` : "";
+  turn.det.querySelector("summary").textContent = stepLabel(turn.steps) + secs;
+  if (turn.lastText && ev.result && turn.lastText.textContent === ev.result) turn.lastText.remove();   // final text is shown outside
+  if (!turn.body.childElementCount) turn.det.remove();   // nothing happened: no card
+  turn = null;
+}
+
+function setStatus(st, extra){
+  agentStatus = st;
+  const tag = $("ctag"); tag.textContent = st.toUpperCase(); tag.className = "tag " + st;
+  const live = st === "idle" || st === "thinking";
+  $("csend").disabled = st !== "idle"; $("ctext").disabled = !live;
+  $("cstop").hidden = st !== "thinking";
+  if (extra) $("cinfo").textContent = extra;
+  if (typeof V !== "undefined" && !["listening", "followup", "speaking"].includes(V.state)) vstate(st === "thinking" ? "thinking" : "idle");
+  if (typeof maybeFollowUp === "function") maybeFollowUp();   // a pending follow-up window waits for the agent to go idle
+}
+
+function toolCard(ev){
+  const d = document.createElement("details"); d.className = "tool"; d.dataset.id = ev.id;
+  const head = ev.name === "Bash" && ev.input && ev.input.command ? ev.input.command : (ev.input && ev.input.file_path) || "";
+  d.innerHTML = `<summary>${esc(ev.name)} <span style="color:var(--muted)">${esc(String(head).slice(0,90))}</span><span class="st">…</span></summary>` +
+                `<pre>${esc(pretty(ev.input))}</pre>`;
+  tools.set(ev.id, d); into(d);
+  if (turn){ turn.steps++; turn.det.querySelector("summary").textContent = stepLabel(turn.steps) + " …"; }   // live while running
+}
+function toolResult(ev){
+  const d = tools.get(ev.tool_use_id); if (!d) return;
+  const st = d.querySelector(".st"); st.textContent = ev.is_error ? "ERROR" : "ok"; st.classList.toggle("err", !!ev.is_error);
+  const pre = document.createElement("pre"); pre.className = "res" + (ev.is_error ? " err" : "");
+  const c = Array.isArray(ev.content) ? ev.content.map(b => b.text ?? pretty(b)).join("\n") : pretty(ev.content);
+  pre.textContent = String(c).slice(0, 4000); d.appendChild(pre);
+  if (ev.is_error) d.open = true;
+}
+
+async function answer(id, decision, card){
+  try { await api("/api/permission", {id, ...decision}); }
+  catch (e) { card.querySelector(".dec").textContent = "could not send: " + e.message; }
+}
+
+function permissionCard(ev){
+  const c = document.createElement("div"); c.className = "card"; c.dataset.id = ev.id;
+  const why = [ev.title, ev.description, ev.decision_reason, ev.blocked_path && ("blocked path: " + ev.blocked_path)].filter(Boolean);
+  const head = ev.tool === "Bash" && ev.input && ev.input.command ? ev.input.command : pretty(ev.input);
+  c.innerHTML = `<div class="ch">PERMISSION · ${esc(ev.tool)}</div>` +
+    (why.length ? `<div class="why">${esc(why.join(" — "))}</div>` : "") +
+    `<pre>${esc(head)}</pre>` +
+    `<div class="acts"><button class="btn" data-a="allow">ALLOW</button>` +
+    (ev.can_remember ? `<button class="btn ghost" data-a="always">ALLOW ALWAYS</button>` : "") +
+    `<button class="btn warn" data-a="deny">DENY</button><input type="text" placeholder="reason / what to do instead (optional)"></div>` +
+    `<div class="dec"></div>`;
+  c.addEventListener("click", e => {
+    const b = e.target.closest("button[data-a]"); if (!b) return;
+    const reason = c.querySelector("input").value.trim();
+    const a = b.dataset.a;
+    answer(ev.id, a === "deny" ? {behavior:"deny", message: reason || "User declined"}
+                               : {behavior:"allow", remember: a === "always"}, c);
+  });
+  cards.set(ev.id, c); append(c);
+}
+
+function questionCard(ev){
+  const c = document.createElement("div"); c.className = "card q"; c.dataset.id = ev.id;
+  const qs = (ev.input && ev.input.questions) || [];
+  c.innerHTML = `<div class="ch">QUESTION</div>` + qs.map((q, qi) =>
+    `<div class="qq" data-q="${qi}"><div class="qh">${esc(q.header || "")}</div><div>${esc(q.question)}</div>` +
+    (q.options || []).map((o, oi) =>
+      `<div class="opt" data-o="${oi}">${esc(o.label)}${oi===0?'<span class="rec">RECOMMENDED</span>':""}` +
+      (o.description ? `<small>${esc(o.description)}</small>` : "") + `</div>`).join("") +
+    `<input type="text" placeholder="other — type your own answer${q.multiSelect?" (select several above, or type)":""}"></div>`).join("") +
+    `<div class="acts"><button class="btn" data-a="submit">ANSWER</button><button class="btn warn" data-a="deny">SKIP</button></div><div class="dec"></div>`;
+  c.addEventListener("click", e => {
+    const opt = e.target.closest(".opt");
+    if (opt){
+      const qq = opt.closest(".qq"); const multi = !!qs[+qq.dataset.q].multiSelect;
+      if (!multi) qq.querySelectorAll(".opt").forEach(o => o !== opt && o.classList.remove("sel"));
+      opt.classList.toggle("sel"); return;
+    }
+    const b = e.target.closest("button[data-a]"); if (!b) return;
+    if (b.dataset.a === "deny") return answer(ev.id, {behavior:"deny", message:"User skipped the question"}, c);
+    const answers = {};
+    for (const qq of c.querySelectorAll(".qq")){
+      const q = qs[+qq.dataset.q];
+      const typed = qq.querySelector("input").value.trim();
+      const picked = [...qq.querySelectorAll(".opt.sel")].map(o => q.options[+o.dataset.o].label);
+      if (typed) answers[q.question] = q.multiSelect && picked.length ? [...picked, typed] : typed;
+      else if (picked.length) answers[q.question] = q.multiSelect ? picked : picked[0];
+    }
+    if (Object.keys(answers).length < qs.length){ c.querySelector(".dec").textContent = "answer every question (or type in the box)"; return; }
+    answer(ev.id, {behavior:"allow", updated_input:{questions: qs, answers}}, c);
+  });
+  cards.set(ev.id, c); append(c);
+}
+
+function resolveCard(ev){
+  const c = cards.get(ev.id); if (!c) return;
+  c.classList.add("resolved");
+  c.querySelectorAll("button, input").forEach(x => x.disabled = true);
+  c.querySelector(".dec").textContent = "→ " + (ev.behavior || "resolved");
+}
+
+function handle(ev){
+  switch (ev.type){
+    case "status":
+      setStatus(ev.status, ev.error ? "ERROR: " + ev.error : ev.status === "idle" && ev.model ? ev.model : undefined);
+      if (ev.status === "error") line("bad", "agent error: " + ev.error);
+      if (ev.status === "idle" && lastResultTouchedState){ lastResultTouchedState = false; load(); }
+      break;
+    case "init": {
+      const bad = (ev.mcp_servers || []).filter(m => m.status === "failed" || m.status === "needs-auth");
+      $("cinfo").textContent = [ev.model, ev.permission_mode].filter(Boolean).join(" · ");
+      if (bad.length && !mcpWarned){ mcpWarned = true; into(mk("bad", "MCP servers unavailable: " + bad.map(m => `${m.name} (${m.status})`).join(", "))); }
+      break;
+    }
+    case "user": closeTurn({}); line("you", ev.text); openTurn(); break;
+    case "assistant_text": { const l = mk("bot", ev.text); into(l); if (turn) turn.lastText = l; break; }
+    case "thinking": { if (!ev.text) break; const d = document.createElement("details"); d.className = "tool"; d.innerHTML = `<summary>thought</summary><pre>${esc(ev.text)}</pre>`; into(d); break; }
+    case "tool_use": toolCard(ev); lastResultTouchedState = true; break;
+    case "tool_result": toolResult(ev); break;
+    case "permission_request": ev.kind === "question" ? questionCard(ev) : permissionCard(ev); break;   // top level: needs attention
+    case "permission_resolved": resolveCard(ev); break;
+    case "result": {
+      closeTurn(ev);
+      const aborted = (ev.terminal_reason || "").startsWith("aborted");
+      const bits = [];
+      if (aborted) bits.push("interrupted");
+      else if (ev.subtype !== "success" || ev.is_error) bits.push(`${ev.subtype}${ev.terminal_reason ? " / " + ev.terminal_reason : ""}`);
+      if (ev.api_error_status) bits.push(`api ${ev.api_error_status}`);
+      if (!aborted && ev.errors && ev.errors.length) bits.push(ev.errors.join("; "));
+      if (ev.permission_denials && ev.permission_denials.length) bits.push(`${ev.permission_denials.length} permission denial(s)`);
+      if (ev.result) line("bot", ev.result);                       // the final statement, outside the card
+      if (bits.length) line(aborted ? "sys" : "bad", "■ " + bits.join(" · "));
+      if (live && ev.origin === ORIGIN) afterReply(ev.result);   // only the tab that asked, never on replay
+      break;
+    }
+    case "replay_end": live = true; break;
+    case "hotkey": if (live) onHotkey(); break;   // never from replay, and the server doesn't record it anyway
+    case "error": line("bad", "error: " + ev.error); break;
+    case "system": break;   // hook_started / hook_response noise
+  }
+}
+
+function connect(){
+  const es = new EventSource("/api/events");
+  es.onopen = () => { T.innerHTML = ""; $("cinfo").textContent = ""; tools.clear(); cards.clear(); mcpWarned = false; live = false; turn = null; };   // replay follows; never double-render, never keep a stale footer
+  es.onmessage = m => { try { handle(JSON.parse(m.data)); } catch (e) { console.error(e); } };
+  es.onerror = () => { setStatus("stopped", "stream lost — reconnecting"); };
+}
+
+async function send(){
+  const text = $("ctext").value.trim(); if (!text) return;
+  try { await api("/api/chat", {text, origin: ORIGIN}); $("ctext").value = ""; }
+  catch (e) { line("bad", e.message); }
+}
+function sendTyped(){ V.voiceTurn = false; send(); }   // a typed turn never opens a follow-up window
+$("csend").addEventListener("click", sendTyped);
+$("ctext").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); sendTyped(); } });
+$("cstop").addEventListener("click", () => api("/api/interrupt", {}).catch(e => line("bad", e.message)));   // {} so api() POSTs
+$("cnew").addEventListener("click", async () => {
+  if (!confirm("Start a fresh session? Today's conversation context is dropped.")) return;
+  try { await api("/api/session", {action:"new"}); T.innerHTML = ""; tools.clear(); cards.clear(); mcpWarned = false; turn = null; }
+  catch (e) { line("bad", e.message); }
+});
+
+/* ================= voice ================= */
+
+// endpointing defaults; the server's /api/config overrides them from env (WAKE_SILENCE_MS etc.)
+const V = { cfg: {silence_ms: 2000, max_utterance_ms: 15000, speech_rms: 0.02, followup_ms: 0}, state: "idle", muted: false, audio: null, rec: null, wake: null,
+            voiceTurn: false,        // the in-flight turn came from the mic, so its reply earns a follow-up window
+            followupPending: false,  // reply finished; open the window once the agent is idle too
+            spokeDone: null };       // resolver for the current playback; stopSpeaking settles it as "cut off"
+
+function vstate(s){ V.state = s; const el = $("vstate"); el.textContent = s === "followup" ? "FOLLOW-UP" : s.toUpperCase(); el.className = "vs " + s; }
+function idleOrThinking(){ return agentStatus === "thinking" ? "thinking" : "idle"; }
+
+// ---- record -> transcribe -> send ----
+async function record({untilSilence, followup = false}){
+  if (V.rec) return;
+  let stream;
+  try { stream = await navigator.mediaDevices.getUserMedia({audio: {echoCancellation: true, noiseSuppression: true}}); }
+  catch (e) { line("bad", "microphone: " + e.message); return; }
+  const rec = new MediaRecorder(stream, {mimeType: "audio/webm"});
+  rec.followup = followup; rec.spoke = false;   // read by onHotkey
+  const chunks = [];
+  rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+  const stopped = new Promise(res => { rec.onstop = res; });
+  rec.start(250);
+  V.rec = rec; vstate(followup ? "followup" : "listening"); $("vtalk").classList.add("rec"); $("vtalk").textContent = "■ DONE";
+
+  if (untilSilence){
+    // simple energy VAD: stop after silence_ms of quiet once speech has been heard, or when
+    // nothing was said for the whole window (followup_ms in a follow-up, else the utterance cap).
+    // A timer, not requestAnimationFrame: rAF is paused in background tabs, which
+    // would leave the recording running forever when the dashboard isn't in front.
+    const {silence_ms, max_utterance_ms, speech_rms, followup_ms} = V.cfg;
+    const ctx = new AudioContext(), an = ctx.createAnalyser(); an.fftSize = 1024;
+    ctx.createMediaStreamSource(stream).connect(an);
+    const buf = new Float32Array(an.fftSize);
+    let spokeAt = null, quietSince = performance.now(); const start = quietSince;
+    const timer = setInterval(() => {
+      if (rec.state !== "recording") { clearInterval(timer); ctx.close(); return; }
+      an.getFloatTimeDomainData(buf);
+      let s = 0; for (const x of buf) s += x * x;
+      const now = performance.now();
+      if (Math.sqrt(s / buf.length) > speech_rms) { if (!rec.spoke) { rec.spoke = true; spokeAt = now; vstate("listening"); } quietSince = now; }
+      const done = rec.spoke ? (now - quietSince > silence_ms || now - spokeAt > max_utterance_ms)
+                             : now - start > (followup ? followup_ms : max_utterance_ms);
+      if (done) rec.stop();
+    }, 50);
+  }
+  await stopped;
+  stream.getTracks().forEach(t => t.stop());
+  V.rec = null; $("vtalk").classList.remove("rec"); $("vtalk").textContent = "● TALK";
+  const blob = new Blob(chunks, {type: "audio/webm"});
+  if ((untilSilence && !rec.spoke) || blob.size < 2000) { vstate(idleOrThinking()); return; }   // nothing said: don't ship silence to Deepgram
+  await transcribeAndSend(blob);
+}
+
+async function transcribeAndSend(blob){
+  vstate("thinking");
+  try {
+    const res = await fetch("/api/transcribe", {method: "POST", headers: {"Content-Type": "audio/webm"}, body: blob});
+    const d = await res.json();
+    if (!res.ok || d.error) throw new Error(d.error || res.statusText);
+    if (!d.text || !d.text.trim()) { line("sys", "(heard nothing)"); vstate("idle"); return; }
+    $("ctext").value = d.text; V.voiceTurn = true;
+    await send();
+  } catch (e) { line("bad", "transcribe: " + e.message); vstate("idle"); }
+}
+
+// ---- speak the final result ----
+function stopSpeaking(){ if (V.audio){ const a = V.audio; V.audio = null; a.pause(); a.src = ""; if (V.spokeDone) V.spokeDone(false); } }
+async function speak(text){
+  // resolves true when playback ran to its end, false when it was skipped, cut off, or failed
+  if (!V.cfg.tts || V.muted || !text) return false;
+  try {
+    const res = await fetch("/api/speak", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({text})});
+    if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error || res.statusText); }
+    const url = URL.createObjectURL(await res.blob());
+    stopSpeaking();
+    const a = new Audio(url); V.audio = a; vstate("speaking");
+    const done = new Promise(r => { V.spokeDone = r; a.onended = () => r(true); a.onerror = () => r(false); });
+    await a.play();
+    const ended = await done; V.spokeDone = null;
+    URL.revokeObjectURL(url); if (V.audio === a){ V.audio = null; vstate(idleOrThinking()); }
+    return ended;
+  } catch (e) { V.spokeDone = null; line("bad", "speak: " + e.message); vstate(idleOrThinking()); return false; }
+}
+
+// ---- follow-up window ----
+// After a reply to a spoken turn, hold the mic open for followup_ms so the next sentence
+// needs no wake word or hotkey. Speech inside the window is a new spoken turn, which earns
+// its own window, so a conversation stays live until the user goes quiet. The window opens
+// only once both the voice state and the agent are idle (the agent's idle status can land
+// before or after playback ends), and never after a barge-in: the user is already talking.
+async function afterReply(text){
+  V.followupPending = false;
+  if (!text) return;                           // interrupted or failed turn: nothing was answered
+  const spokenOut = V.cfg.tts && !V.muted;
+  const ended = await speak(text);
+  if (V.voiceTurn && V.cfg.followup_ms > 0 && (ended || !spokenOut)) { V.followupPending = true; maybeFollowUp(); }
+}
+function maybeFollowUp(){
+  if (!V.followupPending || V.state !== "idle" || agentStatus !== "idle") return;
+  V.followupPending = false; record({untilSilence: true, followup: true});
+}
+
+// ---- wake word (openWakeWord on the server; the page streams 16 kHz PCM over a WebSocket) ----
+// One word does both jobs: said while idle it starts listening; said while the assistant is
+// speaking or thinking it's a barge-in. Ignored while an utterance is already being recorded.
+function onWake(d){
+  if (V.state === "speaking" || agentStatus === "thinking"){
+    stopSpeaking();
+    if (agentStatus === "thinking") api("/api/interrupt", {}).catch(() => {});
+    vstate(idleOrThinking()); return;
+  }
+  if (V.state === "idle" && agentStatus === "idle") record({untilSilence: true});
+}
+// Global hotkey (pynput on the server, see HOTKEY): same job as the wake word, plus a
+// second press while recording ends the turn without waiting for the silence timer.
+function onHotkey(){
+  if (V.rec) {
+    if (V.rec.followup && !V.rec.spoke) return;   // mic is already open in a quiet follow-up window: just talk
+    V.rec.stop(); return;
+  }
+  onWake({hotkey: true});
+}
+async function wakeOn(){
+  const stream = await navigator.mediaDevices.getUserMedia({audio: {echoCancellation: true, noiseSuppression: true}});
+  const ctx = new AudioContext({sampleRate: 16000});           // the browser resamples the mic for us
+  await ctx.audioWorklet.addModule("/static/wake-worklet.js");
+  const node = new AudioWorkletNode(ctx, "pcm16");
+  const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws/wake");
+  ws.binaryType = "arraybuffer";
+  await new Promise((res, rej) => { ws.onopen = res; ws.onerror = () => rej(new Error("wake socket failed")); });
+  node.port.onmessage = e => { if (ws.readyState === 1) ws.send(e.data); };
+  ws.onmessage = m => {
+    const d = JSON.parse(m.data);
+    if (d.error) { line("bad", "wake: " + d.error); wakeOff(); }
+    else if (d.wake) onWake(d);
+  };
+  ws.onclose = () => { if (V.wake) { line("bad", "wake word stream closed"); wakeOff(); } };
+  ctx.createMediaStreamSource(stream).connect(node);            // not connected to the speakers
+  V.wake = {stream, ctx, node, ws};
+}
+async function wakeOff(){
+  const w = V.wake; if (!w) return; V.wake = null;
+  try { w.ws.onclose = null; w.ws.close(); w.node.disconnect(); w.stream.getTracks().forEach(t => t.stop()); await w.ctx.close(); }
+  catch (e) { console.error(e); }
+  drawWake();
+}
+function drawWake(){
+  const b = $("vwake"), on = !!V.wake, w = V.cfg.wake_word || "the wake word";
+  b.classList.toggle("on", on);
+  b.title = b.ariaLabel = on ? `listening for "${w}" (click to stop)` : `listen for "${w}" hands-free`;
+  $("ico-ear").toggleAttribute("hidden", !on); $("ico-ear-off").toggleAttribute("hidden", on);
+}
+
+// ---- controls ----
+$("vtalk").addEventListener("click", () => { if (V.rec) V.rec.stop(); else record({untilSilence: false}); });
+$("vwake").addEventListener("click", async () => {
+  const b = $("vwake"); b.disabled = true;
+  try {
+    if (V.wake) await wakeOff();
+    else { await wakeOn(); drawWake(); }
+  } catch (e) { line("bad", "wake word: " + e.message); await wakeOff(); }
+  b.disabled = false;
+});
+function drawMute(){
+  const b = $("vmute"); b.classList.toggle("on", !V.muted);
+  b.title = b.ariaLabel = V.muted ? "unmute replies" : "mute replies";
+  // SVG elements have no `hidden` property, so toggle the attribute
+  $("ico-on").toggleAttribute("hidden", V.muted); $("ico-off").toggleAttribute("hidden", !V.muted);
+}
+$("vmute").addEventListener("click", () => { V.muted = !V.muted; if (V.muted) stopSpeaking(); drawMute(); });
+drawMute();
+
+(async () => {
+  try { V.cfg = {...V.cfg, ...await api("/api/config")}; } catch (e) { $("vnote").textContent = "voice config unavailable"; return; }
+  $("vtalk").disabled = !V.cfg.stt;
+  if (V.cfg.hotkey) $("vtalk").title += ` · or press ${V.cfg.hotkey} from any window`;
+  if (V.cfg.hotkey_error) line("sys", "hotkey unavailable: " + V.cfg.hotkey_error);
+  $("vwake").disabled = !(V.cfg.wake && V.cfg.stt); drawWake();   // tooltip picks up the real wake word
+  const missing = [!V.cfg.stt && "DEEPGRAM_API_KEY", !V.cfg.tts && "CARTESIA_API_KEY / CARTESIA_VOICE_ID",
+                   !V.cfg.wake && ("wake word (" + (V.cfg.wake_error || "unavailable") + ")")].filter(Boolean);
+  $("vnote").textContent = missing.length ? "voice needs: " + missing.join(", ") : "";
+})();
+
+connect();
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(gws calendar +agenda)",
+      "Bash(gws calendar +agenda *)",
+      "Bash(gws gmail +triage)",
+      "Bash(gws gmail +triage *)",
+      "Bash(python scripts/planner.py *)",
+      "Bash(python scripts/state.py *)",
+      "Bash(python scripts/*)",
+      "Bash(python \"scripts/*)",
+      "Bash(python scripts/stale_guard.py)",
+      "Bash(python scripts/email_guard.py)"
+    ],
+    "ask": [
+      "Bash(gws gmail +send*)",
+      "Bash(gws gmail +reply*)",
+      "Bash(gws gmail +reply-all*)",
+      "Bash(gws gmail +forward*)",
+      "Bash(gws docs +write*)",
+      "Bash(gws drive +upload*)",
+      "Bash(gws sheets +append*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "try { $raw = $input | Out-String; $data = $raw | ConvertFrom-Json; $prompt = $data.user_prompt; if ($prompt -match '(?i)(calling.it.a.night|call.it.a.night|going.to.sleep|done.for.the.day|heading.to.bed|end.of.day|good.night|signing.off)') { @{hookSpecificOutput=@{hookEventName='UserPromptSubmit';additionalContext='BEHAVIORAL RULE: User is ending their day. You MUST run /wrap-up skill as your first action before responding.'}} | ConvertTo-Json -Compress } } catch {}"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "$json = $input | ConvertFrom-Json; $cmd = $json.tool_input.command; if ($cmd -match 'gws') { $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'; Add-Content -Path $(Join-Path (Get-Location) 'logs\\gws_log.txt') -Value \"[$timestamp] BASH: $cmd\" }",
+            "statusMessage": "Logging gws command..."
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "$json = $input | ConvertFrom-Json; $skill = $json.tool_input.skill; if ($skill -like 'gws*') { $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'; Add-Content -Path $(Join-Path (Get-Location) 'logs\\gws_log.txt') -Value \"[$timestamp] SKILL: $skill\" }",
+            "statusMessage": "Logging gws skill..."
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/stale_guard.py"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/email_guard.py",
+            "statusMessage": "Checking for email sends..."
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/stale_guard.py",
+            "statusMessage": "Checking for stale state read..."
+          }
+        ]
+      }
+    ]
+  }
+}

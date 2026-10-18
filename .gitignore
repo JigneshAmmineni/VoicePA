@@ -1,0 +1,19 @@
+# secrets — never commit; work against .env.example
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# runtime
+logs/
+state/.session_id
+
+# claude local overrides
+.claude/settings.local.json
+
+# agent payloads for scripts/state.py --from
+tmp/
