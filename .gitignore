@@ -17,3 +17,6 @@ state/.session_id
 
 # agent payloads for scripts/state.py --from
 tmp/
+
+# the personal strings scan_public.py checks for; never leaves this machine
+private_terms.txt
