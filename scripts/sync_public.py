@@ -126,7 +126,7 @@ def main():
         f"Sync from {SOURCE} {sha[:7]}\n\nSnapshot of {SOURCE}'s tree: {len(updates)} file(s) updated, "
         f"{len(removals)} removed. State files and private files left out.", cwd=wt)
     print(f"\ncommitted on {BRANCH}: {text('log', '--oneline', '-1', cwd=wt)}")
-    print(f'push with:  git -C "{wt}" push origin {BRANCH}')
+    print(f'push with:  git -C "{wt}" push')   # the branch's upstream, set when it was first published
 
 
 if __name__ == "__main__":
