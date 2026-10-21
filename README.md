@@ -1,36 +1,59 @@
 # VoicePA
 
-A personal assistant you talk to. It runs a long-lived Claude Code session on your own machine, keeps your tasks, habits, priorities and lists in plain JSON files, reads your Gmail and Calendar through Google's `gws` CLI, and answers out loud. You start a turn by saying "computer", by pressing a global hotkey from anywhere on your computer, or by clicking a button on the dashboard. The reply comes back spoken, in a sentence or two.
+VoicePA is a personal assistant you talk to out loud. Say "computer" or press a key, tell it what's on your mind, and it answers in a sentence or two. It keeps track of your tasks, habits and priorities, plans your morning around your calendar and inbox, books time for your work on your calendar, and walks you through an end-of-day wrap-up and a weekly review. Everything it knows about you lives in plain files on your own computer.
 
-It is built on the Claude Agent SDK. The agent's rules live in `CLAUDE.md` and `system-prompt.md`, the planning routines are three Claude Code skills, and a small FastAPI server with a single-page dashboard ties it together. Nothing leaves your machine except the model calls, speech to text and text to speech.
+## What it can do
 
-## What's in the box
+**Tasks.** Add, update and finish tasks by voice. Each task can carry a priority, an urgency, a rough size, a due date and a day it's scheduled for. Tasks you're blocked on are tracked as "waiting" and come back as follow-up reminders instead of cluttering your to-do list, and tasks you want to keep but not think about can be put into hibernation.
+
+**Priorities.** A short list of what matters most right now. Priorities sit at the top of the dashboard and decide which tasks get picked first each day. If everything is a priority, nothing is, so it makes you choose.
+
+**Habits.** Daily habits with streaks. They sit right on the dashboard, and you can check one off with a click or just by saying so.
+
+**Calendar scheduling.** When you give a task a day, it books time for it on your Google Calendar on its own. It schedules intelligently, considering what's already on the calendar and what the task demands, then tells you when it landed and what it sits next to.
+
+**Morning planner.** Say "plan my day" and it reads your calendar, sorts your inbox into what needs a reply and what can wait, checks your priorities, habits and deadlines, and builds a realistic plan for the day without overloading it. You hear the one thing that matters most; the full plan is on the dashboard.
+
+**Night wrap-up.** Say "good night" or "done for the day" and it reviews what got done and what didn't, logs your habits, and resets for tomorrow. Unfinished work is never silently moved around.
+
+**Journal.** At the end of the day it asks if anything's worth writing down, and records what you say word for word.
+
+**Weekly review.** Habit consistency, what got done, what you kept putting off, tasks that have gone stale, and anything your journal suggests about where your focus should go. It ends by helping you reset your priorities for the week ahead.
+
+**Email.** Summarizes your inbox and drafts replies at your command. It cannot send email: drafts wait in Gmail for you to read and send.
+
+**Everything else worth keeping.** Ideas, side projects, papers and things to read, a shopping list that tracks things to buy, return and sell along with their deadlines, and a watchlist that recommends something to watch based on your mood. It can also read and add to your Google Docs, Drive and Sheets when asked, and it remembers your preferences and long-term goals between conversations.
+
+**Personality.** It keeps replies short and has a dry, sarcastic sense of humor by default. The whole personality is one paragraph you can rewrite.
+
+## Talking to it
+
+- **Wake word.** Turn on the ear button and say "computer". Listening for the wake word happens on your computer; nothing is sent anywhere until it hears it.
+- **Hotkey.** Press `F8` from any app to start talking. The dashboard tab just needs to be open somewhere. You can change the key, or turn it off, with `HOTKEY` in `.env` (see Settings).
+- **TALK button**, or type in the chat panel.
+- After it answers, the microphone stays open for twelve seconds so you can keep going without the wake word. Silence closes it.
+- Say the wake word or press the hotkey while it's talking to interrupt it.
+- When it needs your permission, or has a question with options, a card appears in the chat panel.
+- One conversation per day, picked back up if you restart. NEW SESSION starts fresh.
+
+## How it works
+
+VoicePA runs a Claude agent on your machine, built on the [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python). A small local web server owns the conversation and serves a single-page dashboard. Your speech goes to Deepgram to become text, the agent reads and updates your data and your Google account through Google's [`gws`](https://github.com/googleworkspace/cli) command-line tool, and the reply is spoken back by Cartesia. The agent's behavior is described in plain language in `CLAUDE.md`, `system-prompt.md` and three skills under `.claude/skills/`, so changing how it works mostly means editing text.
 
 | Path | What it is |
 |---|---|
-| `dashboard/server.py` | FastAPI server. Owns the Claude session, serves the dashboard, does speech to text, text to speech, wake word detection and the global hotkey. |
-| `dashboard/agent.py` | The Claude Agent SDK session. One per day, resumed across restarts. |
-| `dashboard/index.html` | The dashboard and chat panel. |
-| `dashboard/start-dashboard.bat`, `stop-dashboard.bat` | Double-click to start or stop. |
-| `state/` | Your data. Tasks, habits, priorities, journal, ideas, projects, research, shopping, watchlist. Ships empty. |
-| `scripts/state.py` | The only way the agent writes state files. Ids, duplicate checks, atomic writes. |
-| `scripts/email_guard.py`, `stale_guard.py` | Hooks. The first makes sending email impossible, the second blocks edits to a state file that was not freshly read. |
-| `scripts/purge_sessions.py` | Deletes session transcripts idle for 30 days or more. Run it when you want. |
-| `.claude/` | Permissions, hooks and the `daily-planner`, `weekly-review` and `wrap-up` skills. |
-| `CLAUDE.md` | How the state files work and how the assistant should behave with them. |
-| `system-prompt.md` | The full system prompt, including the personality. Edit freely. |
+| `dashboard/` | The local server, the agent session and the dashboard page, plus double-click start and stop scripts. |
+| `state/` | Your data, as JSON. Ships empty. |
+| `scripts/` | The tools the agent uses to update your data safely, and the safety hooks. |
+| `.claude/` | Permissions, hooks, and the morning planner, wrap-up and weekly review skills. |
+| `CLAUDE.md` | The assistant's operating manual. |
+| `system-prompt.md` | The system prompt, including the personality. |
 | `models/wake/` | The "computer" wake word models. |
 
-## How a turn works
-
-1. You say "computer", press the hotkey, or click TALK.
-2. The browser records until you have been quiet for three seconds.
-3. The audio goes to Deepgram and comes back as text.
-4. The text goes to the Claude session, which reads and writes your state files and your Google data as needed. Tool calls show up as a collapsible card in the chat panel.
-5. The final line is sent to Cartesia and played back.
-6. The microphone stays open for twelve more seconds, so you can keep talking without the wake word.
-
 ## Requirements
+
+Setup takes about half an hour, most of it creating accounts. If you use a coding agent such as Claude Code, open this folder in it and ask it to walk you through the steps below; it can do most of them for you.
+
 
 - Windows. The launchers are batch files and the hooks in `.claude/settings.json` are PowerShell. The server itself is plain Python, so porting means replacing those two things.
 - Python 3.13 or newer and [uv](https://docs.astral.sh/uv/).
@@ -118,17 +141,6 @@ uv run python dashboard/server.py
 
 Click TALK once so the browser asks for the microphone and remembers the answer. Then type `/daily-planner` in the chat panel, or say "plan my day". With an empty state it has little to say, so add a task or two first, by voice or by typing. "Add a task: file the insurance claim by Friday" is enough.
 
-## Talking to it
-
-- **TALK** records until you click it again.
-- **The ear button** turns on the wake word. Say "computer" and it listens. Audio is processed on your machine by openWakeWord; nothing is sent anywhere until the word fires.
-- **The hotkey** does the same from any window, as long as the dashboard tab is open somewhere. Default `F8`. On a laptop `HOTKEY=<ctrl_r>` in `.env` gives you a single key with no Fn. The key still reaches whatever app is focused.
-- After a spoken reply the microphone stays open for twelve seconds. Just keep talking. Silence closes it.
-- Saying the wake word or pressing the hotkey while it is speaking or thinking interrupts it.
-- Typing in the chat panel works too. Typed turns do not open the microphone.
-- When the agent needs permission for something, or has a question with options, a card appears in the panel. Answer there.
-- One session per day. Restarting the server resumes it. NEW SESSION starts over; old sessions stay on disk as Claude Code transcripts until `scripts/purge_sessions.py` removes them.
-
 ## Settings
 
 All in `.env`, all optional except the three keys.
@@ -152,11 +164,11 @@ All in `.env`, all optional except the three keys.
 
 ## Safety
 
-- The assistant cannot send email. A `PreToolUse` hook refuses any `gws gmail` send, reply or forward and tells the agent to create a draft instead. You press Send in Gmail. This holds in every permission mode.
-- Writes to Docs, Drive and Sheets ask first, through a card in the panel. Calendar events for scheduled tasks are the one write that happens on its own; `CLAUDE.md` explains the rules.
-- Every state write goes through `scripts/state.py`, and a hook blocks any edit to a state file that was not read first, so two writers cannot clobber each other.
-- No secrets are in this repository. `.env` is gitignored, and Claude and Google credentials live in their own tools' stores, not here.
-- Runs on localhost only.
+- It cannot send email. A hook blocks every send, reply and forward and has it make a draft instead, whatever permission mode it runs in.
+- Changes to Docs, Drive and Sheets ask first, through a card in the chat panel. Calendar events for scheduled tasks are the one thing it writes on its own.
+- A hook stops it from overwriting a data file it hasn't just read, so the dashboard and the agent can't clobber each other.
+- No secrets live in this repository. `.env` is gitignored, and Claude and Google sign-ins live in their own tools' stores.
+- The server only listens on your own machine.
 
 ## Making it yours
 
@@ -175,10 +187,6 @@ git update-index --skip-worktree state/*.json
 ```
 
 Conversation transcripts are written by Claude Code under your home folder, not here. `python scripts/purge_sessions.py` deletes the ones idle for thirty days or more; `--dry-run` lists them first.
-
-## Keeping a public branch current
-
-If you work on `main` with your own entries and share a `public` branch, do not merge or rebase between them. The public branch is an orphan with no history in common, and that is what keeps your private history private. `python scripts/sync_public.py` copies main's committed files into the public worktree, leaves out `state/*.json` and anything gitignored, checks the result with `scripts/scan_public.py`, and commits one snapshot. Put the words the scan must never find, your name and email for a start, in `private_terms.txt`, which is gitignored. `--dry-run` shows what would change without writing anything.
 
 ## License
 
